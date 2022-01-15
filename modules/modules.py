@@ -46,6 +46,7 @@ def bicis():
 def final(): 
     df_final = pd.DataFrame(df_bicis[["title", "TIPO DE LUGAR", "address.street-address", "DISTANCIA", "name", "address"]])
     df_final = df_final.rename(index=str, columns={"title": "Place of Interest", "TIPO DE LUGAR": "Type of Place", "address.street-address": "Place Address", "name": "BiciMad Station", "address": "Station location"})
+    return df_final
 
 
 def bicimad_station():
