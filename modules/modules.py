@@ -52,7 +52,7 @@ def final():
 def bicimad_station():
     i = str(input("Introduzca lugar "))
     x = df_final[df_final["Place of Interest"] == i]
-    return x.sort_values(by = "DISTANCIA", ascending = True).head(1).drop(["DISTANCIA"], axis = "columns")
+    return x.sort_values(by = "DISTANCIA", ascending = True).head(1)
 
 def bicimad():
     return df_final.sort_values(by = "DISTANCIA", ascending = True).groupby('Place of Interest')['Type of Place','Place Address', 'DISTANCIA','BiciMad Station', 'Station location'].nth(0).drop(["DISTANCIA"], axis = "columns")
