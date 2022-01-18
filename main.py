@@ -11,8 +11,8 @@ import sys
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "--tipo",
-    dest = "tipo",
+    "--valor",
+    dest = "valor",
     default = "EstacionMasCercana",
     help = "parametro para selecionar el tipo de ejecucion. Posibles valores: EstacionMasCercana , TodaslasEstaciones"
 )
@@ -88,12 +88,12 @@ def bicimad_station():
 def bicimad():
     return df_final.sort_values(by = "DISTANCIA", ascending = True).groupby('Place of Interest')['Type of Place','Place Address', 'DISTANCIA','BiciMad Station', 'Station location'].nth(0).drop(["DISTANCIA"], axis = "columns")
 
-if args.tipo == "EstacionMasCercana":
+if args.valor == "EstacionMasCercana":
     mas_cercana = bicimad_station()
     # print(mas_cercana)
     mas_cercana.to_csv("Data/Estación más cercana.csv", sep= ";")
     print("Guardado en Data")
-elif args.tipo == "TodaslasEstaciones":
+elif args.valor == "TodaslasEstaciones":
     todas_ubicaciones = bicimad()
     # print(todas_ubicaciones)
     todas_ubicaciones.to_csv("Data/Todas ubicaciones.csv", sep= ";")
