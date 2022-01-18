@@ -10,7 +10,6 @@ import sys
 
 #transforma latitud/longitud en grados a coordinadas en metros
 def to_mercator(lat, long):
-    # transform latitude/longitude data in degrees to pseudo-mercator coordinates in metres
     c = gpd.GeoSeries([Point(lat, long)], crs=4326)
     c = c.to_crs(3857)
     return c
