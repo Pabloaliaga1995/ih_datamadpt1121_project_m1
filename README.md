@@ -1,6 +1,6 @@
 
-OBJETIVES
-- Get a table wit every Medical Attention Center and its nearest BiciMad Station. This table would be saved in our folder(Data) by csv.
+OBJECTIVES
+- Get a table with every Medical Attention Center and its nearest BiciMad Station. This table would be saved in our folder(Data) by csv.
 - Introducing a Medical Attention Center, we have to find the closest BiciMad Station. This table would be saved in our folder too (Data) by csv.
 
 ENV
@@ -24,13 +24,13 @@ In order to clean the data, we have to create dataframes.
 Once imported, we have to clean the database, in order to drop the columns that we are not goint to use and separate latitude and longitude in two differents columns. We have created a new column for the distance, using to mercator () to get a point between latitude and longitude.
 For this step, we have used the functions read_json() and centros().
 
-- Using distance_meters() we get the distances between two address.
+- Using distance_meters() we get the distances between two addresses.
 
 - After getting the distance, we have to merge both tables, so we use bicis() in order to have a table with every distance, stations and centres.
 
 - Naturally, we have to clean that table, so we use final() in order to get a table only with the data we would use.
 
-- The final steps of our project are use a function to create a Datafram with the closest biciMad Stations, that's why we use bicimad_station(). If we want to get every center with its closest station, we would use bicimad().
+- The final steps of our project are use a function to create a Dataframe with the closest biciMad Stations, that's why we use bicimad_station(). If we want to get every center with its closest station, we would use bicimad().
 
 - For making it more intuitive for the user, we have introduce the argparse function. With this function, the user can introduce a string on terminal (EstacionMasCercana or TodaslasEstaciones) and depends on them decision, the terminal run the right code. Also, if the customer doesn't introduce anything, it would get a csv with the closest bicimad Station.
 
