@@ -2,10 +2,8 @@ from modules import modules as md
 import pandas as pd
 import numpy as np
 import requests
-import bs4
 from shapely.geometry import Point
 import geopandas as gpd
-import os
 import argparse
 import sys
 

@@ -8,7 +8,6 @@ We have created a new environment (project1) and installed and import (import + 
 - Python 3.7 (conda install python == 3.7)
 - Pandas (conda install pandas)
 - Numpy (conda install numpy)
-- BeautifulSoup (pip install BeautifulSoup)
 - Shapely.geometry
 - Geopandas (conda install geopandas)
 - Requests(conda install requests)
