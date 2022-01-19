@@ -89,12 +89,10 @@ def bicimad():
 
 if args.valor == "EstacionMasCercana":
     mas_cercana = bicimad_station()
-    # print(mas_cercana)
     mas_cercana.to_csv("Data/Estación más cercana.csv", sep= ";")
     print("Guardado en Data")
 elif args.valor == "TodaslasEstaciones":
     todas_ubicaciones = bicimad()
-    # print(todas_ubicaciones)
     todas_ubicaciones.to_csv("Data/Todas ubicaciones.csv", sep= ";")
     print("Guardado en Data")
 else:
