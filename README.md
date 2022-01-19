@@ -1,74 +1,46 @@
-<p align="left"><img src="https://cdn-images-1.medium.com/max/184/1*2GDcaeYIx_bQAZLxWM4PsQ@2x.png"></p>
 
-# __ih_datamadpt1121_project_m1__
+OBJETIVES
+- Get a table wit every Medical Attention Center and its nearest BiciMad Station. This table would be saved in our folder(Data) by csv.
+- Introducing a Medical Attention Center, we have to find the closest BiciMad Station. This table would be saved in our folder too (Data) by csv.
 
-Ironhack Madrid - Data Analytics Part Time - November 2021 - Project Module 1
+ENV
+We have created a new environment (project1) and installed and import (import + "name of the library) therein the following library:
+- Python 3.7 (conda install python == 3.7)
+- Pandas (conda install pandas)
+- Numpy (conda install numpy)
+- BeautifulSoup (pip install BeautifulSoup)
+- Shapely.geometry
+- Geopandas (conda install geopandas)
+- Requests(conda install requests)
+- Argparse
+- Sys 
+- Json (conda install json)
 
-## **Data:**
+CODE
+- Import databases:
+     - bicimad(from Azure Data Studio, downloading into our local repo).
+     - centros: with requests we get the json from the website and work with it.
+In order to clean the data, we have to create dataframes.
+Once imported, we have to clean the database, in order to drop the columns that we are not goint to use and separate latitude and longitude in two differents columns. We have created a new column for the distance, using to mercator () to get a point between latitude and longitude.
+For this step, we have used the functions read_json() and centros().
 
-There are 2 main datasources:
+- Using distance_meters() we get the distances between two address.
 
-- **Azure SQL Database.** The database contains information from the BiciMAD stations including their location (i.e.: latitude / longitude). In order to access the database you may need the following credentials:
-```
-Server name:   sqlironhack
-Database:      BiciMAD
-```
-> __IMPORTANT =>__ Username and password will be provided in class.
+- After getting the distance, we have to merge both tables, so we use bicis() in order to have a table with every distance, stations and centres.
 
+- Naturally, we have to clean that table, so we use final() in order to get a table only with the data we would use.
 
-- **API REST.** We will use the API REST from the [Portal de datos abiertos del Ayuntamiento de Madrid](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/), where you can find the __Catálogo de datos__ with more than 70 datasets.
+- The final steps of our project are use a function to create a Datafram with the closest biciMad Stations, that's why we use bicimad_station(). If we want to get every center with its closest station, we would use bicimad().
 
-> __IMPORTANT =>__ Specific datasets will be assigned to each student in order to perform the challenges.
+- For making it more intuitive for the user, we have introduce the argparse function. With this function, the user can introduce a string on terminal (EstacionMasCercana or TodaslasEstaciones) and depends on them decision, the terminal run the right code. Also, if the customer doesn't introduce anything, it would get a csv with the closest bicimad Station.
 
+- Finally, in order to run it on Terminal, it has to be used the following command: python main.py followed by the type of table we want to get. If is there any question about the options, please, introduce python main.py --help.
 
----
+CSV SAVED
+--------------------------------------
+- Documents/ironhack/ih_datamadpt1121_project_m1/Data/Estación más cercana.csv)
+- Documents/ironhack/ih_datamadpt1121_project_m1/Data/Todas ubicaciones.csv) 
 
-## **Main Challenge:**
-
-You must create a Python App (**Data Pipeline**) that allow their potential users to find the nearest BiciMAD station to a set of places of interest. The output table should look similar to:
-
-| Place of interest | Type of place (*) | Place address | BiciMAD station | Station location |
-|---------|----------|-------|------------|----------|
-| Auditorio Carmen Laforet (Ciudad Lineal)   | Centros Culturales | Calle Jazmin, 46 | Legazpi | Calle Bolívar, 3 |
-| Centro Comunitario Casino de la Reina | Centros municipales de enseñanzas artísticas | Calle Casino, 3 | Chamartin | Calle Rodríguez Jaén, 40 |
-| ...     | ...            | ...        | ...      | ...        |
-> __(*)__ There is a list of datasets each one with different places. A specific dataset will be assigned to each student. 
-
-
-**Your project must meet the following requirements:**
-
-- It must be contained in a GitHub repository which includes a README file that explains the aim and content of your code. You may follow the structure suggested [here](https://github.com/potacho/data-project-template).
-
-- It must create, at least, a `.csv` file including the requested table (i.e. Main Challenge). Alternatively, you may create an image, pdf, plot or any other output format that you may find convenient. You may also send your output by e-mail, upload it to a cloud repository, etc. 
-
-- It must provide, at least, two options for the final user to select when executing using `argparse`: **(1)** To get the table for every 'Place of interest' included in the dataset (or a set of them), **(2)** To get the table for a specific 'Place of interest' imputed by the user.
-
-**Additionally:**
-
-- You must prepare a 4 minutes presentation (ppt, canva, etc.) to explain your project (Instructors will provide further details about the content of the presentation).
-
-- The last slide of your presentation must include your candidate for the **'Ironhack Data Code Beauty Pageant'**. 
-
-
----
-
-### **Bonus 1:**
-
-You may include in your table the availability of bikes in each station.
-
----
-
-### **Bonus 2:**
-
-You may improve the usability of your app by using [FuzzyWuzzy](https://pypi.org/project/fuzzywuzzy/).
-
----
-
-### **Bonus 3:**
-
-Feel free to enrich your output data with any data you may find relevant (e.g.: wiki info for every place of interest).
-
---- 
 
 ## **Project Main Stack**
 
